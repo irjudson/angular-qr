@@ -23,8 +23,24 @@
       return $scope.text || '';
     };
 
-    $scope.getSize = function(){
-      return $scope.size || 250;
+    $scope.getSize = function(canvas){
+      // test to see if this works
+      var usableHeight;
+      var usableWidth;
+      var headerHeight = 100;
+      if (window.innerHeight > canvas.parentElement.offsetHeight) {
+        usableHeight = window.innerHeight - headerHeight;
+        usableWidth = window.innerWidth;
+      } else {
+        usableHeight = canvas.parentElement.offsetHeight - headerHeight;
+        usableWidth = canvas.parentElement.offsetWidth;        
+      }
+
+      if (usableWidth < usableHeight) {
+        return $scope.size || usableWidth;
+      } else {
+        return $scope.size || usableHeight;
+      }
     };
 
     $scope.isNUMBER = function(text){
@@ -98,7 +114,7 @@
         scope.TYPE_NUMBER = scope.getTypeNumeber();
         scope.TEXT = scope.getText();
         scope.CORRECTION = scope.getCorrection();
-        scope.SIZE = scope.getSize();
+        scope.SIZE = scope.getSize(canvas);
         scope.INPUT_MODE = scope.getInputMode(scope.TEXT);
 
         var draw = function(context, qr, modules, tile){
