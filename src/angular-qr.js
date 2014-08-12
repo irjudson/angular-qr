@@ -142,7 +142,7 @@
           var tile = size / modules;
           canvas.setAttribute("width", size-10);
           canvas.setAttribute("height", size-10);
-          canvas.setAttribute("style", "border: 10px solid white;margin-top:5px")
+          canvas.setAttribute("style", "border:25px solid white;margin-top:5px")
           if (canvas2D) {
             draw(context, qr, modules, tile);
           }
