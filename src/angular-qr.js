@@ -140,8 +140,9 @@
 
           var modules = qr.getModuleCount();
           var tile = size / modules;
-          canvas.width = canvas.height = size;
-
+          canvas.setAttribute("width", size);
+          canvas.setAttribute("height", size);
+          canvas.setAttribute("style", "border: 10px solid white;margin-top:5px")
           if (canvas2D) {
             draw(context, qr, modules, tile);
           }
